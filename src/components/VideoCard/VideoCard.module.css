@@ -1,0 +1,27 @@
+.card-badge {
+  font-size: 1.2rem;
+  font-weight: 700;
+  top: auto;
+  bottom: 1rem;
+  right: 1rem;
+  left: auto;
+}
+.card-vertical {
+  max-width: 30rem;
+}
+.image-container {
+  position: relative;
+}
+.image-container:hover {
+  transition: all;
+}
+.card-vertical:hover {
+  transition: none;
+}
+.btn {
+  padding: 0rem;
+}
+.desc__views {
+  font-size: 1.4rem;
+  margin-right: 2rem;
+}

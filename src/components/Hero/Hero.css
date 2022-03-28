@@ -1,0 +1,47 @@
+.intro-img {
+  height: 80vh;
+
+  background-image: linear-gradient(
+      to right bottom,
+      rgb(131 185 154 / 28%),
+      rgb(11 67 11 / 36%)
+    ),
+    url(../../assest/hero6.jpg);
+  background-size: cover;
+  background-position: top;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.intro-text-box {
+  text-align: center;
+}
+.heading-primary {
+  color: var(--color-white);
+  text-transform: uppercase;
+  margin-bottom: 6rem;
+}
+.heading-primary-main {
+  display: block;
+  font-size: 6rem;
+  font-weight: 400;
+  letter-spacing: 3.5rem;
+}
+.heading-primary-sub {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.8rem;
+}
+.btn-round {
+  border-radius: 10rem;
+}
+@media screen and (max-width: 700px) {
+  .heading-primary-main {
+    font-size: 3rem;
+    letter-spacing: 2.5rem;
+  }
+  .heading-primary-sub {
+    font-size: 1.5rem;
+  }
+}

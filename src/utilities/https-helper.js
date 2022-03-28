@@ -1,6 +1,6 @@
 import axios from 'axios'
 /**
- * 
+ * make network call and fetch videos list
  * @returns array which contains video data
  */
 const getVideosDataFromVideo = async () => {

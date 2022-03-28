@@ -1,0 +1,12 @@
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-icon {
+  font-size: 2rem;
+  color: var(--color-grey-dark-1);
+}
+.nav-icon:hover {
+  color: var(--color-primary);
+}

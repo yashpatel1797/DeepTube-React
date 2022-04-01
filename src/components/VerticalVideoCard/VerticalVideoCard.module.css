@@ -1,0 +1,13 @@
+.card-image{
+    height: 10rem;
+    width: 100%;
+    object-fit: contain;
+}
+
+.card-badge{
+    font-size: 1.2rem;
+    top: auto;
+    bottom: 1rem;
+    right: 1rem;
+    left: auto;
+}

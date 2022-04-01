@@ -1,0 +1,12 @@
+.dialog{
+    width: auto;
+    height: auto;
+    
+}
+.modal_header {
+    display: flex;
+    justify-content: space-between;
+}
+.input-field {
+    display: inline-block;
+}

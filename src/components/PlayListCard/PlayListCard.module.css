@@ -1,0 +1,26 @@
+.card-badge {
+  font-size: 2rem;
+  width: 50%;
+  top: 0;
+  bottom: 0.5rem;
+  right: 0;
+  left: auto;
+  background-color: var(--color-modal-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card-vertical {
+  max-width: 30rem;
+}
+.image-container {
+  position: relative;
+}
+.btn {
+  padding: 0rem;
+}
+.card-vertical:hover {
+  box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 20%);
+  transform: scale(1);
+  transition: 0.4s all;
+}

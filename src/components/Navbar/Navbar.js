@@ -19,10 +19,6 @@ const Navbar = () => {
                         <span className="material-icons"> search </span>
                     </Link>
                 </div>
-                <button className="btn btn-toggle">
-                    <span className="material-icons" id="light_mode"> light_mode </span>
-                    <span className="material-icons" id="dark_mode"> dark_mode </span>
-                </button>
                 <div className="nav-hamburger">
                     <span className="material-icons"> menu </span>
                 </div>
@@ -33,7 +29,7 @@ const Navbar = () => {
 
                     </Link>
                     <span className="nav-notification-icon">
-                        <Link to="/wishlist" className="btn nav-user-btn">
+                        <Link to="/playlist" className="btn nav-user-btn">
                             <span className="material-icons"> playlist_add </span>
 
 

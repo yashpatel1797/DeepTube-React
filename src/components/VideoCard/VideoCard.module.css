@@ -21,6 +21,16 @@
 .btn {
   padding: 0rem;
 }
+.modal_active{
+  position: relative;
+}
+.modal_btn{
+  position: absolute;
+  top: 4rem;
+    left: 3rem;
+    background-color: var(--color-grey-light-3);
+    z-index: 5;
+}
 .desc__views {
   font-size: 1.4rem;
   margin-right: 2rem;

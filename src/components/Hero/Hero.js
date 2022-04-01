@@ -7,11 +7,11 @@ const Hero = () => {
             <main className="intro-img">
                 <div className="intro-text-box">
                     <h1 className="heading-primary">
-                        <span className="heading-primary-main">Reading</span>
-                        <span className="heading-primary-sub">brings us unknown friends.</span>
+                        <span className="heading-primary-main">Movies</span>
+                        <span className="heading-primary-sub">take us to another world.</span>
                     </h1>
                     <Link to="/videos"><button className="btn btn-solid btn-round">
-                        Shop now
+                        Watch Now
                     </button></Link>
                 </div>
             </main>

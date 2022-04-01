@@ -1,14 +1,15 @@
-import { Routes, Route } from "react-router-dom";
-import { Home, VideoListing } from './pages'
 import { Navbar, Footer } from './components'
+import { ScrollToTop } from "utilities";
+import { routes } from "config";
+import { useRoutes } from "react-router-dom"
+
 function App() {
+  const routeElement = useRoutes(routes)
   return (
     <div className="App">
+      <ScrollToTop />
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/videos" element={<VideoListing />} />
-      </Routes>
+      {routeElement}
       <Footer />
     </div>
   );

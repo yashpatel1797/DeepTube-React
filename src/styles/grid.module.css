@@ -1,0 +1,12 @@
+.grid_15_85 {
+  display: grid;
+  grid-template-columns: 15% 85%;
+  background-color: var(--color-grey-light-1);
+}
+@media screen and (max-width: 1070px) {
+  .grid_15_85 {
+    display: grid;
+    grid-template-columns: 100%;
+    background-color: var(--color-grey-light-1);
+  }
+}

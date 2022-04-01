@@ -5,20 +5,20 @@ import App from "./App";
 import { BrowserRouter } from 'react-router-dom';
 
 import { makeServer } from "./server";
-import { VideoProvider } from "context";
+import { VideoProvider, PlayListProvider } from "context";
 
 // Call make Server
 makeServer();
 
 ReactDOM.render(
   <VideoProvider>
-    <React.StrictMode>
-
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-
-    </React.StrictMode>
+    <PlayListProvider>
+      <React.StrictMode>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </React.StrictMode>
+    </PlayListProvider>
   </VideoProvider>,
   document.getElementById("root")
 );

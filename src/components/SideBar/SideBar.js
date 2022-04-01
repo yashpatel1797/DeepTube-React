@@ -8,9 +8,13 @@ const SideBar = () => {
             <aside className={styles.sidebar}>
                 <ul className={styles.sidebar__links}>
                     {sideBar.map(({ name, iconName, path }) => (
-                        <li >
-                            <NavLink to={path} className={({ isActive }) => `${styles.sidebar__link_item} ${isActive ? styles.active__link : ""
-                                }`}>
+                        <li key={name}>
+                            <NavLink
+                                to={path}
+
+                                className={({ isActive }) => `${styles.sidebar__link_item} ${isActive ? styles.active__link : ""
+                                    }`}
+                            >
                                 <span className={`${styles.sidebar__icon} material-icons`}>{iconName}</span>
                                 {name}
                             </NavLink>

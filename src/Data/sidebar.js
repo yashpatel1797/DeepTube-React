@@ -12,7 +12,7 @@ const sideBar = [
     {
         name: "Playlist",
         iconName: "playlist_add",
-        path: "/"
+        path: "/playlist"
     },
     {
         name: "Watch later",

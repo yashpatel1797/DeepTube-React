@@ -1,0 +1,15 @@
+.btn-signup {
+    width: 100%;
+    margin-top: 2rem;
+}
+.password-input {
+    position: relative;
+    display: block;
+}
+.btn-visibility {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    margin: 0;
+    padding: 0;
+}

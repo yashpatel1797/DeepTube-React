@@ -70,4 +70,13 @@ export const users = [
       }
     ]
   },
+  {
+    _id: uuid(),
+    firstName: "yash",
+    lastName: "patel",
+    email: "yashpatel@gmail.com",
+    password: "yashpatel",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+  }
 ];

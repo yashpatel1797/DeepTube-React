@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import styles from './VideoCard.module.css'
-import { usePlayList } from 'context'
+import { useAuth, usePlayList } from 'context'
 
 const VideoCard = ({ video, setCurrentClickedVideo }) => {
+    const { isLogin } = useAuth();
     const { _id, title, creator, duration, views, uploaded } = video
     const [displayContainer, setDisplayContainer] = useState(false);
     const { setShowModal } = usePlayList();
@@ -34,7 +35,7 @@ const VideoCard = ({ video, setCurrentClickedVideo }) => {
                         onClick={() => setDisplayContainer(pre => !pre)}>
                         <span className="material-icons"> more_vert </span>
                     </button>
-                    {displayContainer &&
+                    {displayContainer && isLogin &&
                         <div className={`${styles.modal_btn}`}>
                             <button className="btn btn-ghost btn-icon-center">
                                 <span className="material-icons"> watch_later </span>Watch later
@@ -42,7 +43,6 @@ const VideoCard = ({ video, setCurrentClickedVideo }) => {
                             <button className="btn btn-ghost btn-icon-center" onClick={saveToPlaylistHandler}>
                                 <span className="material-icons"> playlist_add </span> save to playlist
                             </button>
-
                         </div>
                     }
                 </div>

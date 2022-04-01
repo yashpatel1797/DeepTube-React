@@ -1,7 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useAuth } from 'context'
 import "./Navbar.css"
+
 const Navbar = () => {
+    const { isLogin, firstName, authDispatch } = useAuth();
+    const logoutHandler = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("userData");
+        authDispatch({ type: "USER_LOGOUT" })
+    }
     return (
         <>
             <nav className="nav-bar">
@@ -25,16 +33,21 @@ const Navbar = () => {
                 <div className="nav-user">
                     <Link to="/login" className="btn nav-user-btn">
                         <span className="material-icons"> person </span>
-                        <span>Login</span>
-
+                        <span>{firstName ? `Hi ${firstName}` : "Login"} </span>
                     </Link>
                     <span className="nav-notification-icon">
                         <Link to="/playlist" className="btn nav-user-btn">
                             <span className="material-icons"> playlist_add </span>
-
-
                             <span>Playlist</span></Link>
                     </span>
+                    {isLogin &&
+                        <Link to="/login" className="btn nav-user-btn" onClick={logoutHandler}>
+                            <span className="material-icons" >
+                                logout
+                            </span>
+                            <span>Logout</span>
+                        </Link>
+                    }
                 </div>
             </nav>
         </>

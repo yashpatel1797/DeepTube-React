@@ -1,6 +1,8 @@
 export { getVideosDataFromVideo } from "./services/https-helper"
 export { createPlayList, getPlaylistData, deletePlaylist } from "./services/playlistModal-helper"
 export { isVideoAlreadyInPlaylist } from "./playlistFunction"
+export { isVideoInWatchLater } from "./watchLaterFunction"
 export { addVideoInPlaylist, removeVideoFromPlaylist } from "./services/playlist-helper"
 export { ScrollToTop } from "./ScrollToTop"
+export { getWatchLaterData, addVideoInWatchLater, removeVideoFromWatchLater } from "./services/watchlater-helper"
 export { encodedToken } from "./token"

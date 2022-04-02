@@ -17,7 +17,7 @@ const sideBar = [
     {
         name: "Watch later",
         iconName: "watch_later",
-        path: "/"
+        path: "/watchlater"
     },
     {
         name: "Liked videos",

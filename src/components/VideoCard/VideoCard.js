@@ -1,17 +1,27 @@
 import React, { useState } from 'react'
 import styles from './VideoCard.module.css'
 import { useAuth, usePlayList } from 'context'
+import { addVideoInWatchLater, removeVideoFromWatchLater, isVideoInWatchLater } from "utilities"
 
 const VideoCard = ({ video, setCurrentClickedVideo }) => {
     const { isLogin } = useAuth();
     const { _id, title, creator, duration, views, uploaded } = video
     const [displayContainer, setDisplayContainer] = useState(false);
-    const { setShowModal } = usePlayList();
+    const { setShowModal, watchLater, playListDispatch } = usePlayList();
 
     const saveToPlaylistHandler = () => {
         setDisplayContainer(pre => !pre)
         setShowModal(true);
         setCurrentClickedVideo(video)
+    }
+    const watchListHandler = () => {
+        if (isVideoInWatchLater(_id, watchLater)) {
+            setDisplayContainer(pre => !pre)
+            removeVideoFromWatchLater(_id, playListDispatch);
+        } else {
+            setDisplayContainer(pre => !pre)
+            addVideoInWatchLater(video, playListDispatch);
+        }
     }
     return (
         <div className={` ${styles["card-vertical"]} card-vertical`}>
@@ -24,9 +34,6 @@ const VideoCard = ({ video, setCurrentClickedVideo }) => {
                     loading="lazy"
                 />
                 <span className={`${styles['card-badge']} card-badge`}>{duration}</span>
-                <button className="card-badge-close btn btn-icon-only">
-                    <span className="material-icons"> watch_later </span>
-                </button>
             </div>
             <div className="text-container">
                 <div className={`${styles.modal_active} text-container-title`}>
@@ -37,9 +44,22 @@ const VideoCard = ({ video, setCurrentClickedVideo }) => {
                     </button>
                     {displayContainer && isLogin &&
                         <div className={`${styles.modal_btn}`}>
-                            <button className="btn btn-ghost btn-icon-center">
-                                <span className="material-icons"> watch_later </span>Watch later
-                            </button>
+                            {isVideoInWatchLater(_id, watchLater) ?
+                                (<button
+                                    className="btn btn-ghost btn-icon-center"
+                                    onClick={watchListHandler}
+                                >
+                                    <span className="material-icons"> watch_later </span>Remove Watch later
+                                </button>)
+                                : (
+                                    <button
+                                        className="btn btn-ghost btn-icon-center"
+                                        onClick={watchListHandler}
+                                    >
+                                        <span className="material-icons"> watch_later </span>Watch later
+                                    </button>
+                                )
+                            }
                             <button className="btn btn-ghost btn-icon-center" onClick={saveToPlaylistHandler}>
                                 <span className="material-icons"> playlist_add </span> save to playlist
                             </button>

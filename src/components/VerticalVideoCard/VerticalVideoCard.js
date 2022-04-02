@@ -1,10 +1,15 @@
 import React from 'react'
+import { usePlayList } from 'context'
+import { useParams } from "react-router-dom"
 import styles from "./VerticalVideoCard.module.css"
 
-const VerticalVideoCard = ({ videos, urlId, deleteDispatch, deleteVideoFrom }) => {
+const VerticalVideoCard = ({ videos, deleteVideoFrom }) => {
+
+    const { playListDispatch } = usePlayList();
+    const { playlistId } = useParams();
 
     const videoDeleteHandler = (videoId) => {
-        deleteVideoFrom(videoId, urlId, deleteDispatch)
+        deleteVideoFrom(videoId, playListDispatch, playlistId)
     }
     return (
         <>

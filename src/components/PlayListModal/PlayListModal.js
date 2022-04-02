@@ -1,12 +1,12 @@
 import { usePlayList } from 'context'
 import React, { useState } from 'react'
 import styles from './PlayListModal.module.css'
-import { createPlayList, isVideoAlreadyInPlaylist, removeVideoFromPlaylist, addVideoInPlaylist } from "utilities"
+import { createPlayList, isVideoAlreadyInPlaylist, removeVideoFromPlaylist, addVideoInPlaylist, addVideoInWatchLater, removeVideoFromWatchLater, isVideoInWatchLater } from "utilities"
 import ReactDOM from "react-dom"
 
 const PlayListModal = ({ video }) => {
     const [playlistInput, setPlaylistInput] = useState(false)
-    const { setShowModal, playlists, playListTitle, playListDispatch, playListTitleDispatch } = usePlayList();
+    const { setShowModal, playlists, watchLater, playListTitle, playListDispatch, playListTitleDispatch } = usePlayList();
 
     const playListTitleHandler = (e) => {
         e.preventDefault();
@@ -23,6 +23,13 @@ const PlayListModal = ({ video }) => {
             removeVideoFromPlaylist(video._id, playlistId, playListDispatch)
         }
     }
+    const watchListHandler = () => {
+        if (isVideoInWatchLater(video._id, watchLater)) {
+            removeVideoFromWatchLater(_id, playListDispatch);
+        } else {
+            addVideoInWatchLater(video, playListDispatch);
+        }
+    }
     return ReactDOM.createPortal(
         <div className=" modal-active modal-container">
             <div className={`${styles.dialog} dialog`}>
@@ -36,7 +43,12 @@ const PlayListModal = ({ video }) => {
                 <ul className="list-spaced list-checkbox fn-size-m">
                     <li>
                         <label className="list-label">
-                            <input type="checkbox" name="" id="" />Watch Later
+                            <input
+                                type="checkbox"
+                                name="watchLater"
+                                id="watchLater"
+                                checked={isVideoInWatchLater(video._id, watchLater) ?? false}
+                                onChange={watchListHandler} />Watch Later
                         </label>
                     </li>
                     {playlists.map(({ _id, title }) =>

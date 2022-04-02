@@ -17,6 +17,10 @@ const playListReducer = (state, { type, payload }) => {
             return {
                 ...state, playlists: state.playlists.filter(({ _id }) => _id !== payload)
             }
+        case "ADD_WATCH_LATER":
+            return {
+                ...state, watchLater: payload
+            }
         default:
             return state;
     }

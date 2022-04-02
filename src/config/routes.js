@@ -1,4 +1,4 @@
-import { Home, VideoListing, PlayList, DetailedPlaylist, Login, Signup } from "pages"
+import { Home, VideoListing, PlayList, DetailedPlaylist, WatchLater, Login, Signup } from "pages"
 import { PrivateRoute } from "PrivateRoute";
 import MockMan from 'mockman-js';
 
@@ -30,6 +30,10 @@ const routes = [
             {
                 path: "/playlist/:playlistId",
                 element: <DetailedPlaylist />,
+            },
+            {
+                path: "/watchlater",
+                element: <WatchLater />,
             },
         ]
     },

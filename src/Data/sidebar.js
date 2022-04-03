@@ -22,12 +22,12 @@ const sideBar = [
     {
         name: "Liked videos",
         iconName: "thumb_up",
-        path: "/"
+        path: "/like"
     },
     {
         name: "History",
         iconName: "history",
-        path: "/"
+        path: "/history"
     }
 ]
 

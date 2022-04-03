@@ -1,17 +1,16 @@
 import React from 'react'
 import { usePlayList } from 'context'
 import { useNavigate, useParams } from "react-router-dom"
-import { deletePlaylist } from 'utilities'
 import styles from "./PageInfoCard.module.css"
 
-const PageInfoCard = ({ image_id, title }) => {
+const PageInfoCard = ({ image_id, title, deleteButton }) => {
     const navigate = useNavigate();
     const { playListDispatch } = usePlayList();
     const { playlistId } = useParams();
 
     const playlistDeleteHandler = () => {
-        deletePlaylist(playlistId, playListDispatch);
-        navigate("/playlist")
+        deleteButton(playListDispatch, playlistId);
+        playlistId && navigate("/playlist");
     }
     return (
         <>
@@ -27,7 +26,7 @@ const PageInfoCard = ({ image_id, title }) => {
                 <div className="text-container">
                     <div className="text-container-title">
                         <h4>{title}</h4>
-                        {playlistId && <button className={`${styles.btn} btn btn-icon-only`}>
+                        {deleteButton && <button className={`${styles.btn} btn btn-icon-only`}>
                             <span className="material-icons" onClick={playlistDeleteHandler}> delete </span>
                         </button>}
                     </div>
@@ -36,5 +35,4 @@ const PageInfoCard = ({ image_id, title }) => {
         </>
     )
 }
-
 export { PageInfoCard }

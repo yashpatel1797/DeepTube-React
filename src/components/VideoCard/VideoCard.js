@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import styles from './VideoCard.module.css'
 import { useAuth, usePlayList } from 'context'
-import { addVideoInWatchLater, removeVideoFromWatchLater, isVideoInWatchLater } from "utilities"
+import { addVideoInWatchLater, removeVideoFromWatchLater, isVideoInArray } from "utilities"
+import { Link } from 'react-router-dom'
 
 const VideoCard = ({ video, setCurrentClickedVideo }) => {
     const { isLogin } = useAuth();
@@ -14,26 +15,26 @@ const VideoCard = ({ video, setCurrentClickedVideo }) => {
         setShowModal(true);
         setCurrentClickedVideo(video)
     }
-    const watchListHandler = () => {
-        if (isVideoInWatchLater(_id, watchLater)) {
-            setDisplayContainer(pre => !pre)
-            removeVideoFromWatchLater(_id, playListDispatch);
-        } else {
-            setDisplayContainer(pre => !pre)
-            addVideoInWatchLater(video, playListDispatch);
-        }
+    const removeWatchListHandler = () => {
+        setDisplayContainer(pre => !pre)
+        removeVideoFromWatchLater(_id, playListDispatch);
+    }
+    const addWatchListHandler = () => {
+        setDisplayContainer(pre => !pre)
+        addVideoInWatchLater(video, playListDispatch);
     }
     return (
         <div className={` ${styles["card-vertical"]} card-vertical`}>
-
             <div className={`${styles["image-container"]}`}>
-                <img
-                    src={`https://i.ytimg.com/vi/${_id}/hq720.jpg`}
-                    alt={title}
-                    className="card-image"
-                    loading="lazy"
-                />
-                <span className={`${styles['card-badge']} card-badge`}>{duration}</span>
+                <Link to={`/video/${_id}`}>
+                    <img
+                        src={`https://i.ytimg.com/vi/${_id}/hq720.jpg`}
+                        alt={title}
+                        className="card-image"
+                        loading="lazy"
+                    />
+                    <span className={`${styles['card-badge']} card-badge`}>{duration}</span>
+                </Link>
             </div>
             <div className="text-container">
                 <div className={`${styles.modal_active} text-container-title`}>
@@ -44,17 +45,17 @@ const VideoCard = ({ video, setCurrentClickedVideo }) => {
                     </button>
                     {displayContainer && isLogin &&
                         <div className={`${styles.modal_btn}`}>
-                            {isVideoInWatchLater(_id, watchLater) ?
+                            {isVideoInArray(_id, watchLater) ?
                                 (<button
                                     className="btn btn-ghost btn-icon-center"
-                                    onClick={watchListHandler}
+                                    onClick={removeWatchListHandler}
                                 >
                                     <span className="material-icons"> watch_later </span>Remove Watch later
                                 </button>)
                                 : (
                                     <button
                                         className="btn btn-ghost btn-icon-center"
-                                        onClick={watchListHandler}
+                                        onClick={addWatchListHandler}
                                     >
                                         <span className="material-icons"> watch_later </span>Watch later
                                     </button>

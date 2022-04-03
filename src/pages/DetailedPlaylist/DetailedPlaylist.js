@@ -3,7 +3,7 @@ import { usePlayList } from 'context'
 import { useParams } from "react-router-dom"
 import React from 'react'
 import classes from "styles/grid.module.css"
-import { removeVideoFromPlaylist } from "utilities"
+import { removeVideoFromPlaylist, deletePlaylist } from "utilities"
 
 const DetailedPlaylist = () => {
     const { playlists } = usePlayList();
@@ -19,7 +19,7 @@ const DetailedPlaylist = () => {
                 <div className={classes.grid_15_85}>
                     <SideBar />
                     <div className='grid-30-70'>
-                        <PageInfoCard image_id={image_id} title={data.title} />
+                        <PageInfoCard image_id={image_id} title={data.title} deleteButton={deletePlaylist} />
                         <div>
                             <VerticalVideoCard
                                 videos={videos}

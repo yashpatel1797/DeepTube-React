@@ -1,8 +1,11 @@
 export { getVideosDataFromVideo } from "./services/https-helper"
 export { createPlayList, getPlaylistData, deletePlaylist } from "./services/playlistModal-helper"
 export { isVideoAlreadyInPlaylist } from "./playlistFunction"
-export { isVideoInWatchLater } from "./watchLaterFunction"
+export { isVideoInArray } from "./isVideoInArray"
 export { addVideoInPlaylist, removeVideoFromPlaylist } from "./services/playlist-helper"
 export { ScrollToTop } from "./ScrollToTop"
 export { getWatchLaterData, addVideoInWatchLater, removeVideoFromWatchLater } from "./services/watchlater-helper"
+export { removeVideoFromLike, addVideoInLike } from "./services/like-helper"
+export { removeVideoFromHistory, addVideoInHistory, deleteAllHistory } from "./services/history-helper"
+
 export { encodedToken } from "./token"

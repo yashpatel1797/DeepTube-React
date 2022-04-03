@@ -1,7 +1,7 @@
 import { VideoPlayer } from 'components'
-import { usePlayList, useVideo } from 'context'
+import { useAuth, usePlayList, useVideo } from 'context'
 import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { isVideoInArray, removeVideoFromLike, addVideoInLike, addVideoInHistory, addVideoInWatchLater, removeVideoFromWatchLater } from "utilities"
 import { PlayListModal, SideBar } from 'components'
 import styles from "./VideoPage.module.css"
@@ -9,8 +9,10 @@ import classes from "styles/grid.module.css"
 
 const VideoPage = () => {
     const { like, playListDispatch, watchLater, setShowModal, showModal } = usePlayList();
+    const { isLogin } = useAuth();
     const { videoList } = useVideo();
     const { videoId } = useParams();
+    const navigate = useNavigate();
     const video = videoList?.find(({ _id }) => _id === videoId)
 
     useEffect(() => {
@@ -19,19 +21,24 @@ const VideoPage = () => {
         })();
     }, [video, playListDispatch])
     const likeHandler = () => {
-        addVideoInLike(video, playListDispatch)
+        !isLogin ? navigate("/login") :
+            addVideoInLike(video, playListDispatch)
     }
     const disLikeHandler = () => {
-        removeVideoFromLike(videoId, playListDispatch)
+        !isLogin ? navigate("/login") :
+            removeVideoFromLike(videoId, playListDispatch)
     }
     const removeWatchListHandler = () => {
-        removeVideoFromWatchLater(video._id, playListDispatch);
+        !isLogin ? navigate("/login") :
+            removeVideoFromWatchLater(video._id, playListDispatch);
     }
     const addWatchListHandler = () => {
-        addVideoInWatchLater(video, playListDispatch);
+        !isLogin ? navigate("/login") :
+            addVideoInWatchLater(video, playListDispatch);
     }
     const saveToPlaylistHandler = () => {
-        setShowModal(true);
+        !isLogin ? navigate("/login") :
+            setShowModal(true);
     }
     return (
         <div className={classes.grid_15_85}>

@@ -14,7 +14,6 @@ const DetailedPlaylist = () => {
 
     return (
         <>
-            <div className='spacer-3rem'></div>
             <div className='filter-products'>
                 <div className={classes.grid_15_85}>
                     <SideBar />

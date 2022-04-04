@@ -40,7 +40,7 @@ const createPlayList = async (playListTitle, playListDispatch) => {
  * @param {reducer function} playListDispatch 
  * @returns playlist array
  */
-const deletePlaylist = async (playlistId, playListDispatch) => {
+const deletePlaylist = async (playListDispatch, playlistId) => {
     try {
         const { data } = await axios.delete(`/api/user/playlists/${playlistId}`, {
             headers: { authorization: encodedToken },

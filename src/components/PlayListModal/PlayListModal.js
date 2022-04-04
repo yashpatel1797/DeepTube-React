@@ -1,7 +1,7 @@
 import { usePlayList } from 'context'
 import React, { useState } from 'react'
 import styles from './PlayListModal.module.css'
-import { createPlayList, isVideoAlreadyInPlaylist, removeVideoFromPlaylist, addVideoInPlaylist, addVideoInWatchLater, removeVideoFromWatchLater, isVideoInWatchLater } from "utilities"
+import { createPlayList, isVideoAlreadyInPlaylist, removeVideoFromPlaylist, addVideoInPlaylist, addVideoInWatchLater, removeVideoFromWatchLater, isVideoInArray } from "utilities"
 import ReactDOM from "react-dom"
 
 const PlayListModal = ({ video }) => {
@@ -24,7 +24,7 @@ const PlayListModal = ({ video }) => {
         }
     }
     const watchListHandler = () => {
-        if (isVideoInWatchLater(video._id, watchLater)) {
+        if (isVideoInArray(video._id, watchLater)) {
             removeVideoFromWatchLater(_id, playListDispatch);
         } else {
             addVideoInWatchLater(video, playListDispatch);
@@ -47,7 +47,7 @@ const PlayListModal = ({ video }) => {
                                 type="checkbox"
                                 name="watchLater"
                                 id="watchLater"
-                                checked={isVideoInWatchLater(video._id, watchLater) ?? false}
+                                checked={isVideoInArray(video._id, watchLater) ?? false}
                                 onChange={watchListHandler} />Watch Later
                         </label>
                     </li>
@@ -83,5 +83,4 @@ const PlayListModal = ({ video }) => {
         </div>, document.getElementById("modal")
     )
 }
-
 export { PlayListModal }

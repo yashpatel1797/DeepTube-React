@@ -1,0 +1,26 @@
+.container {
+    margin: auto;
+    padding: 2rem;
+}
+.btn_section {
+    display: flex;
+}
+.desc__views {
+    font-size: 2rem;
+    margin-right: 2rem;
+}
+.info{
+    margin-right: auto;
+}
+.details {
+    display: flex;
+    align-items: center;
+}
+.channel_info{
+    display: flex;
+    align-items: center;
+
+}
+.channel_logo {
+    margin-right: 2rem;
+}

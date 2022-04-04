@@ -13,6 +13,7 @@ export const videos = [
     duration: "20:39",
     views: "1.6M",
     uploaded: "2",
+    logo: "https://yt3.ggpht.com/ytc/AKedOLQBVrfvqOj3RH4BXQs2PzBW0gTSYygAGwSbnRXD0g=s176-c-k-c0x00ffffff-no-rj-mo",
   },
   {
     _id: "QPAloq5MCUA",
@@ -23,6 +24,7 @@ export const videos = [
     duration: "07:29",
     views: "3.7M",
     uploaded: "2",
+    logo: "https://yt3.ggpht.com/ytc/AKedOLRHmhqjFHuM12MxD5uUe6mK0a5T-86W7gbNVpf1=s176-c-k-c0x00ffffff-no-rj-mo",
   },
   {
     _id: "NUrTRjEXjSM",
@@ -33,6 +35,7 @@ export const videos = [
     duration: "06:09",
     views: "2.7M",
     uploaded: "3",
+    logo: "https://yt3.ggpht.com/ytc/AKedOLRHmhqjFHuM12MxD5uUe6mK0a5T-86W7gbNVpf1=s176-c-k-c0x00ffffff-no-rj-mo"
   },
   {
     _id: "D218bEnVTL8",
@@ -43,6 +46,7 @@ export const videos = [
     duration: "14:00",
     views: "0.1M",
     uploaded: "4",
+    logo: "https://yt3.ggpht.com/ytc/AKedOLRDgQwT7hq6I7OXOfzlFoC0nTRuUwglT77uifcG3g=s176-c-k-c0x00ffffff-no-rj-mo",
   },
   {
     _id: "RSceAIG27tk",
@@ -53,6 +57,7 @@ export const videos = [
     duration: "42:00",
     views: "1M",
     uploaded: "2",
+    logo: "https://yt3.ggpht.com/ytc/AKedOLRDgQwT7hq6I7OXOfzlFoC0nTRuUwglT77uifcG3g=s176-c-k-c0x00ffffff-no-rj-mo",
   },
   {
     _id: "D5qyna6kcGA",
@@ -63,6 +68,7 @@ export const videos = [
     duration: "16:35",
     views: "0.4M",
     uploaded: "2",
+    logo: "https://yt3.ggpht.com/ytc/AKedOLSY6-239g14R2bGFOKPT1_j-vXtxv25QOM2cc6rsg=s176-c-k-c0x00ffffff-no-rj-mo",
   },
   {
     _id: "AvO8-925Edc",
@@ -73,6 +79,7 @@ export const videos = [
     duration: "10:21",
     views: "1.4M",
     uploaded: "3",
+    logo: "https://yt3.ggpht.com/ytc/AKedOLQUGo5bFtpdzzTTHD3nQgRg55il0oxntuqUWRg8cw=s176-c-k-c0x00ffffff-no-rj-mo",
   },
   {
     _id: "OizUekfD1cQ",
@@ -83,6 +90,7 @@ export const videos = [
     duration: "06:28",
     views: "1.2M",
     uploaded: "4",
+    logo: "https://yt3.ggpht.com/ytc/AKedOLTDOzkkVXNjp7N0Eo_czhDjNmAt8lzpC5T5gDgl=s176-c-k-c0x00ffffff-no-rj-mo",
   },
   {
     _id: "IprM5uCT_Ts",
@@ -93,6 +101,8 @@ export const videos = [
     duration: "06:44",
     views: "2.5M",
     uploaded: "2",
+    logo: "https://yt3.ggpht.com/ytc/AKedOLQTA4D5zOP1v92bY6vbdNZWtoOGWh_twzjRSuYwFg=s176-c-k-c0x00ffffff-no-rj-mo",
+
   },
   {
     _id: "YkmJBVKqNiE",
@@ -103,6 +113,7 @@ export const videos = [
     duration: "10:44",
     views: "2.4M",
     uploaded: "5",
+    logo: "https://yt3.ggpht.com/ytc/AKedOLQ7vZMMdvDUOdVRiye5hM0bvljVLP49Lt26CLBC7g=s176-c-k-c0x00ffffff-no-rj-mo",
   },
   {
     _id: "6ozbGJQelUY",
@@ -113,6 +124,7 @@ export const videos = [
     duration: "06:57",
     views: "4.6M",
     uploaded: "3",
+    logo: "https://yt3.ggpht.com/ytc/AKedOLSQ201BWXEstHt4iBKU2ISs-LjT7GXEzA6HlMo_iw=s176-c-k-c0x00ffffff-no-rj-mo",
   },
   {
     _id: "XbUG2OgT670",
@@ -123,6 +135,7 @@ export const videos = [
     duration: "09:24",
     views: "2M",
     uploaded: "3",
+    logo: "https://yt3.ggpht.com/ytc/AKedOLSQ201BWXEstHt4iBKU2ISs-LjT7GXEzA6HlMo_iw=s176-c-k-c0x00ffffff-no-rj-mo",
   },
   {
     _id: "jzCLBLX3z4o",
@@ -133,5 +146,6 @@ export const videos = [
     duration: "08:08",
     views: "1.3M",
     uploaded: "3",
+    logo: "https://yt3.ggpht.com/ytc/AKedOLSQ201BWXEstHt4iBKU2ISs-LjT7GXEzA6HlMo_iw=s176-c-k-c0x00ffffff-no-rj-mo",
   },
 ];

@@ -21,6 +21,14 @@ const playListReducer = (state, { type, payload }) => {
             return {
                 ...state, watchLater: payload
             }
+        case "ADD_LIKE":
+            return {
+                ...state, like: payload
+            }
+        case "ADD_HISTORY":
+            return {
+                ...state, history: payload
+            }
         default:
             return state;
     }

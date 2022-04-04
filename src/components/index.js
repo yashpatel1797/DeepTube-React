@@ -7,4 +7,5 @@ export { SideBar } from "./SideBar/SideBar"
 export { PlayListModal } from "./PlayListModal/PlayListModal";
 export { PlayListCard } from "./PlayListCard/PlayListCard"
 export { VerticalVideoCard } from "./VerticalVideoCard/VerticalVideoCard"
+export { VideoPlayer } from "./VideoPlayer/VideoPlayer"
 export { PageInfoCard } from "./PageInfoCard/PageInfoCard"

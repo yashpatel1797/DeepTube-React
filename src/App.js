@@ -1,4 +1,4 @@
-import { Navbar, Footer } from './components'
+import { Navbar, Footer, Toast } from './components'
 import { ScrollToTop } from "utilities";
 import { routes } from "config";
 import { useRoutes } from "react-router-dom"
@@ -8,6 +8,7 @@ function App() {
   return (
     <>
       <ScrollToTop />
+      <Toast />
       <div className="App">
         <Navbar />
         {routeElement}

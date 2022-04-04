@@ -12,7 +12,7 @@ const PlayListCard = ({ playlist }) => {
     const image_id = videos.length > 0 ? `${videos[0]._id}` : "Sxjo5MySQFI"
 
     const playlistDeleteHandler = () => {
-        deletePlaylist(_id, playListDispatch);
+        deletePlaylist(playListDispatch, _id);
     }
     return (
         <div className={` ${styles["card-vertical"]} card-vertical`}>

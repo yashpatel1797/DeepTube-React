@@ -1,4 +1,5 @@
 import axios from "axios"
+import { toast } from "react-toastify"
 import { encodedToken } from "utilities/token"
 
 /**
@@ -15,8 +16,9 @@ const addVideoInPlaylist = async (video, playlistId, playListDispatch) => {
             headers: { authorization: encodedToken }
         })
         playListDispatch({ type: "ADD_VIDEO_TO_PLAYLIST", payload: { video, playlistId } })
+        toast.success(<p>Video added in playlist.</p>)
     } catch (error) {
-        console.log(error);
+        toast.error(<p>Video not added in playlist.</p>)
     }
 }
 /**
@@ -31,9 +33,9 @@ const removeVideoFromPlaylist = async (videoId, playListDispatch, playlistId) =>
             headers: { authorization: encodedToken }
         })
         playListDispatch({ type: "REMOVE_VIDEO_FROM_PLAYLIST", payload: { videoId, playlistId } })
-
+        toast.success(<p>Video removed from playlist.</p>)
     } catch (error) {
-        console.log(error);
+        toast.error(<p>Video not removed from playlist.</p>)
     }
 }
 

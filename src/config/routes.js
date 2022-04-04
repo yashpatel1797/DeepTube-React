@@ -1,5 +1,6 @@
 import { Home, VideoListing, PlayList, DetailedPlaylist, WatchLater, Login, Signup, VideoPage, Like, History } from "pages"
 import { PrivateRoute } from "PrivateRoute";
+import { Error } from "components"
 import MockMan from 'mockman-js';
 
 const routes = [
@@ -48,6 +49,10 @@ const routes = [
                 element: <History />,
             },
         ]
+    },
+    {
+        path: "*",
+        element: <Error />,
     },
     {
         path: "/mockMan",

@@ -3,31 +3,42 @@ import React, { useState } from 'react'
 import styles from './PlayListModal.module.css'
 import { createPlayList, isVideoAlreadyInPlaylist, removeVideoFromPlaylist, addVideoInPlaylist, addVideoInWatchLater, removeVideoFromWatchLater, isVideoInArray } from "utilities"
 import ReactDOM from "react-dom"
-
+import { Loader } from "components"
 const PlayListModal = ({ video }) => {
     const [playlistInput, setPlaylistInput] = useState(false)
     const { setShowModal, playlists, watchLater, playListTitle, playListDispatch, playListTitleDispatch } = usePlayList();
+    const [isLoading, setIsLoading] = useState(false)
 
     const playListTitleHandler = (e) => {
         e.preventDefault();
+        setIsLoading(true);
         createPlayList(playListTitle, playListDispatch)
         setPlaylistInput(false)
+        setTimeout(() => { setIsLoading(false); }, 1200);
     }
     const createListHandler = (e) => {
         setPlaylistInput(true)
     }
     const checkboxHandler = (e, playlistId) => {
         if (e.target.checked) {
+            setIsLoading(true);
             addVideoInPlaylist(video, playlistId, playListDispatch)
+            setTimeout(() => { setIsLoading(false); }, 1200);
         } else {
-            removeVideoFromPlaylist(video._id, playlistId, playListDispatch)
+            setIsLoading(true);
+            removeVideoFromPlaylist(video._id, playListDispatch, playlistId)
+            setTimeout(() => { setIsLoading(false); }, 1200);
         }
     }
     const watchListHandler = () => {
         if (isVideoInArray(video._id, watchLater)) {
-            removeVideoFromWatchLater(_id, playListDispatch);
+            setIsLoading(true);
+            removeVideoFromWatchLater(video._id, playListDispatch);
+            setTimeout(() => { setIsLoading(false); }, 1200);
         } else {
+            setIsLoading(true);
             addVideoInWatchLater(video, playListDispatch);
+            setTimeout(() => { setIsLoading(false); }, 1200);
         }
     }
     return ReactDOM.createPortal(
@@ -54,12 +65,12 @@ const PlayListModal = ({ video }) => {
                     {playlists.map(({ _id, title }) =>
                         <li key={_id}>
                             <label className="list-label">
-                                <input
+                                {isLoading ? <Loader /> : (<input
                                     type="checkbox"
                                     checked={isVideoAlreadyInPlaylist(playlists, _id, video._id) ?? false}
                                     id={_id}
                                     onChange={(e) => { checkboxHandler(e, _id) }}
-                                />
+                                />)}
                                 {title}
                             </label>
                         </li>

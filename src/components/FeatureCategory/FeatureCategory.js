@@ -14,8 +14,8 @@ const FeatureCategory = () => {
 
     return (
         <section className="featured">
-            <h2 className="featured-title">Featured category</h2>
-            <div className="grid-4-column test-text-overlay featured-list">
+            <h2 className={`${styles["featured-title"]} featured-title`}>Featured category</h2>
+            <div className={`${styles["grid-4-column"]} grid-4-column test-text-overlay featured-list`}>
                 {category.map(({ _id, image, categoryName }) => <Link to="/products" key={_id}>
                     <div className={` ${styles["card-vertical"]}`}>
                         <div className="overlay-container">

@@ -1,6 +1,6 @@
 import React from 'react'
 import { usePlayList } from 'context'
-import { SideBar, VerticalVideoCard, PageInfoCard } from 'components'
+import { SideBar, VerticalVideoCard, PageInfoCard, EmptyData } from 'components'
 import { removeVideoFromWatchLater } from "utilities"
 import classes from "styles/grid.module.css"
 
@@ -12,17 +12,18 @@ const WatchLater = () => {
             <div className='filter-products'>
                 <div className={classes.grid_15_85}>
                     <SideBar />
-                    <div className='grid-30-70'>
-                        <PageInfoCard image_id={image_id} title="watchlater" />
-                        <div>
-                            <VerticalVideoCard
-                                videos={watchLater}
-                                // urlId={watchLaterId}
-                                // deleteDispatch={playListDispatch}
-                                deleteVideoFrom={removeVideoFromWatchLater}
-                            />
-                        </div>
-                    </div>
+                    {watchLater.length <= 0 ? <EmptyData /> :
+                        <div className='grid-30-70'>
+                            <PageInfoCard image_id={image_id} title="watchlater" />
+                            <div>
+                                <VerticalVideoCard
+                                    videos={watchLater}
+                                    // urlId={watchLaterId}
+                                    // deleteDispatch={playListDispatch}
+                                    deleteVideoFrom={removeVideoFromWatchLater}
+                                />
+                            </div>
+                        </div>}
                 </div>
             </div>
         </>

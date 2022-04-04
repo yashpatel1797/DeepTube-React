@@ -1,4 +1,5 @@
 import axios from "axios"
+import { toast } from "react-toastify"
 import { encodedToken } from "utilities"
 
 /**
@@ -29,8 +30,9 @@ const createPlayList = async (playListTitle, playListDispatch) => {
             }
         )
         playListDispatch({ type: "ADD_PLAYLIST", payload: data.playlists })
+        toast.success(<p>Playlist created.</p>)
     } catch (error) {
-        console.log(error);
+        toast.error(<p>Not able to create playlist.</p>)
     }
 
 }
@@ -46,9 +48,10 @@ const deletePlaylist = async (playListDispatch, playlistId) => {
             headers: { authorization: encodedToken },
         })
         playListDispatch({ type: "DELETE_PLAYLIST", payload: playlistId })
+        toast.success(<p>Playlist deleted.</p>)
         return data.playlists;
     } catch (error) {
-        console.log(error);
+        toast.error(<p>Not able to delete playlist.</p>)
     }
 }
 export { createPlayList, getPlaylistData, deletePlaylist }

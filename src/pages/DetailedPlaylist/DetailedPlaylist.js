@@ -1,4 +1,4 @@
-import { SideBar, VerticalVideoCard, PageInfoCard } from 'components'
+import { SideBar, VerticalVideoCard, PageInfoCard, EmptyData } from 'components'
 import { usePlayList } from 'context'
 import { useParams } from "react-router-dom"
 import React from 'react'
@@ -18,15 +18,16 @@ const DetailedPlaylist = () => {
             <div className='filter-products'>
                 <div className={classes.grid_15_85}>
                     <SideBar />
-                    <div className='grid-30-70'>
-                        <PageInfoCard image_id={image_id} title={data.title} deleteButton={deletePlaylist} />
-                        <div>
-                            <VerticalVideoCard
-                                videos={videos}
-                                deleteVideoFrom={removeVideoFromPlaylist}
-                            />
-                        </div>
-                    </div>
+                    {videos.length <= 0 ? <EmptyData /> :
+                        <div className='grid-30-70'>
+                            <PageInfoCard image_id={image_id} title={data.title} deleteButton={deletePlaylist} />
+                            <div>
+                                <VerticalVideoCard
+                                    videos={videos}
+                                    deleteVideoFrom={removeVideoFromPlaylist}
+                                />
+                            </div>
+                        </div>}
                 </div>
             </div>
         </>

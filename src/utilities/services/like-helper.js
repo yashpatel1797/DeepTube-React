@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 import { encodedToken } from "utilities/token";
 /**
  * add video in a likes
@@ -11,8 +12,9 @@ const addVideoInLike = async (video, playListDispatch) => {
             headers: { authorization: encodedToken }
         })
         playListDispatch({ type: "ADD_LIKE", payload: data.likes })
+        toast.success(<p>Video liked.</p>)
     } catch (error) {
-        console.log(error);
+        toast.error(<p>Not liked.</p>)
     }
 }
 
@@ -27,8 +29,9 @@ const removeVideoFromLike = async (videoId, playListDispatch) => {
             headers: { authorization: encodedToken }
         })
         playListDispatch({ type: "ADD_LIKE", payload: data.likes })
+        toast.success(<p>Video dislike.</p>)
     } catch (error) {
-        console.log(error);
+        toast.error(<p>Not removed from likes.</p>)
     }
 }
 export { addVideoInLike, removeVideoFromLike }

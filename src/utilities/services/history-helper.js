@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 import { encodedToken } from "utilities/token";
 /**
  * add video in a History
@@ -27,8 +28,9 @@ const removeVideoFromHistory = async (videoId, playListDispatch) => {
             headers: { authorization: encodedToken }
         })
         playListDispatch({ type: "ADD_HISTORY", payload: data.history })
+        toast.success(<p>Video removed from history.</p>)
     } catch (error) {
-        console.log(error);
+        toast.error(<p>Video not removed from history.</p>)
     }
 }
 /**
@@ -41,8 +43,9 @@ const deleteAllHistory = async (playListDispatch) => {
             headers: { authorization: encodedToken }
         })
         playListDispatch({ type: "ADD_HISTORY", payload: data.history })
+        toast.success(<p>All Video removed from history.</p>)
     } catch (error) {
-
+        toast.error(<p>All Video not removed from history.</p>)
     }
 }
 export { addVideoInHistory, removeVideoFromHistory, deleteAllHistory }

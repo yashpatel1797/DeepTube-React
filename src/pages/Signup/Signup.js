@@ -4,13 +4,14 @@ import { useAuth } from "context"
 import "./Signup.css"
 import axios from "axios"
 import { useNavigate, Link } from 'react-router-dom'
+import { Loader } from "components"
 
 const Signup = () => {
     const navigate = useNavigate();
     const { authDispatch } = useAuth();
     const [{ firstName, lastName, email, password, confirmPassword }, signupDispatch
     ] = useReducer(signupFormReducer, { firstName: "", lastName: "", email: "", password: "", confirmPassword: "" })
-
+    const [isLoading, setIsLoading] = useState(false)
     const [togglePassword, setTogglePassword] = useState(false);
     const [toggleRePassword, setToggleRePassword] = useState(false);
 
@@ -27,12 +28,14 @@ const Signup = () => {
     const submitHandler = async (e, firstName, lastName, email, password, confirmPassword) => {
         e.preventDefault();
         try {
+            setIsLoading(true);
             const response = await axios.post('api/auth/signup', { firstName, lastName, email, password });
             localStorage.setItem("token", response.data.encodedToken)
             localStorage.setItem('userData', JSON.stringify(response.data.createdUser));
             authDispatch({ type: "USER_LOGIN" })
             authDispatch({ type: "TOKEN_ADD", payload: response.data.encodedToken })
             authDispatch({ type: "USER_DATA_ADD", payload: response.data.createdUser })
+            setIsLoading(false);
             navigate("/")
         } catch (error) {
             console.log(error);
@@ -41,7 +44,7 @@ const Signup = () => {
     return (
         <>
             <div className="spacer-3rem"></div>
-            <div className="grid-50-50 login">
+            {isLoading ? <Loader /> : (<div className="grid-50-50 login">
                 <img
                     className="img-responsive"
                     alt="form_1"
@@ -118,7 +121,7 @@ const Signup = () => {
                         <button className="btn btn-link">Already have account</button>
                     </Link>
                 </div>
-            </div>
+            </div>)}
         </>
     )
 }

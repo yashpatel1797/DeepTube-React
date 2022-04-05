@@ -1,5 +1,5 @@
 import React from 'react'
-import { SideBar, VerticalVideoCard, PageInfoCard } from 'components'
+import { SideBar, VerticalVideoCard, PageInfoCard, EmptyData } from 'components'
 import classes from "styles/grid.module.css"
 import { removeVideoFromHistory, deleteAllHistory } from "utilities"
 import { usePlayList } from 'context'
@@ -13,15 +13,16 @@ const History = () => {
             <div className='filter-products'>
                 <div className={classes.grid_15_85}>
                     <SideBar />
-                    <div className='grid-30-70'>
-                        <PageInfoCard image_id={image_id} title="History" deleteButton={deleteAllHistory} />
-                        <div>
-                            <VerticalVideoCard
-                                videos={history}
-                                deleteVideoFrom={removeVideoFromHistory}
-                            />
-                        </div>
-                    </div>
+                    {history.length <= 0 ? <EmptyData /> :
+                        <div className='grid-30-70'>
+                            <PageInfoCard image_id={image_id} title="History" deleteButton={deleteAllHistory} />
+                            <div>
+                                <VerticalVideoCard
+                                    videos={history}
+                                    deleteVideoFrom={removeVideoFromHistory}
+                                />
+                            </div>
+                        </div>}
                 </div>
             </div>
         </div>

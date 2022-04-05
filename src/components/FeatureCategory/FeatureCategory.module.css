@@ -5,6 +5,9 @@
 .featured-list {
   justify-items: center;
 }
+.grid-4-column{
+  justify-items: center;
+}
 a {
   text-decoration: none;
 }

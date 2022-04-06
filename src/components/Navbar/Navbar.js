@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useAuth } from 'context'
+import { useAuth, useVideo } from 'context'
 import "./Navbar.css"
 
 const Navbar = () => {
     const { isLogin, firstName, authDispatch } = useAuth();
+    const { videoDispatch } = useVideo();
     const logoutHandler = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("userData");
@@ -21,7 +22,8 @@ const Navbar = () => {
                     <input
                         type="text"
                         className="search-input"
-                        placeholder="Search for product"
+                        placeholder="Search for videos"
+                        onChange={(e) => videoDispatch({ type: "FILTER_BY_SEARCH", payload: e.target.value })}
                     />
                     <Link to="" className="btn btn-search">
                         <span className="material-icons"> search </span>

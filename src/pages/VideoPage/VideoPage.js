@@ -44,16 +44,16 @@ const VideoPage = () => {
         <div className={classes.grid_15_85}>
             <SideBar />
             <div className={styles.container}>
-                {showModal && <PlayListModal video={video} key={video._id} />}
+                {showModal && <PlayListModal video={video} key={video?._id} />}
                 <VideoPlayer />
-                <h1>{video.title}</h1>
+                <h1>{video?.title}</h1>
                 <div className={styles.details}>
                     <div className={`${styles.info} text-container-desc`}>
                         <span className={styles.desc__views}>
-                            {video.views} views
+                            {video?.views} views
                         </span>
                         <span className={styles.desc__views}>
-                            {video.uploaded} years ago
+                            {video?.uploaded} years ago
                         </span>
                     </div>
                     <div className={styles.btn_section}>
@@ -67,7 +67,7 @@ const VideoPage = () => {
                             </button>
                         )
                         }
-                        {isVideoInArray(video._id, watchLater) ?
+                        {isVideoInArray(video?._id, watchLater) ?
                             (<button
                                 className="btn btn-icon-center"
                                 onClick={removeWatchListHandler}
@@ -91,9 +91,9 @@ const VideoPage = () => {
                 <div className={styles.channel_info}>
                     <img
                         className={`${styles.channel_logo} avatar-circle avatar-image-lg`}
-                        src={video.logo}
-                        alt={video.creator} />
-                    <span className={styles.desc__views}>{video.creator}</span>
+                        src={video?.logo}
+                        alt={video?.creator} />
+                    <span className={styles.desc__views}>{video?.creator}</span>
                 </div>
             </div>
         </div>

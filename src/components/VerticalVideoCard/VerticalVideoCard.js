@@ -13,7 +13,7 @@ const VerticalVideoCard = ({ videos, deleteVideoFrom }) => {
     }
     return (
         <>
-            {videos.map(({ _id, title, creator, duration }) =>
+            {videos?.map(({ _id, title, creator, duration }) =>
                 <div className="card-horizontal" key={_id}>
                     <div className="image-container">
                         <img

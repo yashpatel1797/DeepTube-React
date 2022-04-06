@@ -7,5 +7,5 @@ export { ScrollToTop } from "./ScrollToTop"
 export { getWatchLaterData, addVideoInWatchLater, removeVideoFromWatchLater } from "./services/watchlater-helper"
 export { removeVideoFromLike, addVideoInLike } from "./services/like-helper"
 export { removeVideoFromHistory, addVideoInHistory, deleteAllHistory } from "./services/history-helper"
-
+export { filterFunction } from "./filterFunction"
 export { encodedToken } from "./token"

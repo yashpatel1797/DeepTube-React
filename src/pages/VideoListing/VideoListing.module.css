@@ -1,3 +1,13 @@
+.category {
+  display: flex;
+}
+.chip {
+  margin: 0 1rem;
+  cursor: pointer;
+}
+.active {
+  background-color:  var(--color-primary-light);
+}
 @media screen and (max-width: 1450px) {
   .grid-4-column {
     grid-template-columns: 1fr 1fr 1fr;

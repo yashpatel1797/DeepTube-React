@@ -39,10 +39,10 @@ const VideoCard = ({ video, setCurrentClickedVideo }) => {
             <div className="text-container">
                 <div className={`${styles.modal_active} text-container-title`}>
                     <h4>{title}</h4>
-                    <button className={`${styles.btn} btn btn-icon-only`}
+                    {isLogin && <button className={`${styles.btn} btn btn-icon-only`}
                         onClick={() => setDisplayContainer(pre => !pre)}>
                         <span className="material-icons"> more_vert </span>
-                    </button>
+                    </button>}
                     {displayContainer && isLogin &&
                         <div className={`${styles.modal_btn}`}>
                             {isVideoInArray(_id, watchLater) ?

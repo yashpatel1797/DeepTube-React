@@ -11,3 +11,6 @@
     right: 1rem;
     left: auto;
 }
+.card-horizontal{
+    cursor: pointer;
+}

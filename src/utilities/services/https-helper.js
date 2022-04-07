@@ -8,7 +8,7 @@ const getVideosDataFromVideo = async () => {
         const res = await axios.get("/api/videos")
         return res.data.videos;
     } catch {
-        console.log(error);
+
     }
 }
 export { getVideosDataFromVideo }

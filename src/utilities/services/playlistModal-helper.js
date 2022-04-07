@@ -12,7 +12,7 @@ const getPlaylistData = async (playListDispatch, encodedToken) => {
         })
         playListDispatch({ type: "ADD_PLAYLIST", payload: data.playlists })
     } catch (error) {
-        console.log(error);
+
     }
 }
 /**

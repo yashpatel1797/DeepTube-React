@@ -30,15 +30,22 @@ const Login = () => {
         try {
             setIsLoading(true);
             const response = await axios.post("api/auth/login", { email, password });
-            localStorage.setItem("token", response.data.encodedToken)
-            localStorage.setItem('userData', JSON.stringify(response.data.foundUser));
-            authDispatch({ type: "USER_LOGIN" })
-            authDispatch({ type: "TOKEN_ADD", payload: response.data.encodedToken })
-            authDispatch({ type: "USER_DATA_ADD", payload: response.data.foundUser })
+            if (response.status === 200) {
+                localStorage.setItem("token", response.data.encodedToken)
+                localStorage.setItem('userData', JSON.stringify(response.data.foundUser));
+                authDispatch({ type: "USER_LOGIN" })
+                authDispatch({ type: "TOKEN_ADD", payload: response.data.encodedToken })
+                authDispatch({ type: "USER_DATA_ADD", payload: response.data.foundUser })
+                navigate("/")
+            } else {
+                navigate("/login")
+            }
             setIsLoading(false)
-            navigate("/")
+
         } catch (error) {
-            console.log(error);
+            setIsLoading(false);
+            toast.error(<p>Not login. Try again.</p>)
+            navigate("/login");
         }
     }
     return (
@@ -55,6 +62,7 @@ const Login = () => {
                     <div className="spacer-3rem"></div>
                     <form onSubmit={(e) => submitHandler(e, email, password)}>
                         <input
+                            required
                             placeholder="Enter email"
                             name="email"
                             className="input-field"
@@ -65,6 +73,7 @@ const Login = () => {
                         />
                         <span className="password-input">
                             <input
+                                required
                                 placeholder="Enter password"
                                 name="password"
                                 className="input-field"
@@ -84,7 +93,7 @@ const Login = () => {
                                 <input type="checkbox" id="rememberMe" className="btn-remember" />
                                 <label htmlFor="rememberMe" className="label-remember">Remember me</label>
                             </div>
-                            <button className="btn">Forgot Password</button>
+                            <button className="btn" disabled>Forgot Password</button>
                         </section>
                         <button className="btn btn-solid btn-login" onClick={testHandler}>Test credentials</button>
                         <button className="btn btn-solid btn-login" type="submit">Login</button>

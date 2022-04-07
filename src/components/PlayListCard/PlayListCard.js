@@ -33,7 +33,7 @@ const PlayListCard = ({ playlist }) => {
             <div className="text-container">
                 <div className="text-container-title">
                     <h4>{title}</h4>
-                    <button className={`${styles.btn} btn btn-icon-only`}>
+                    <button title="Delete" className={`${styles.btn} btn btn-icon-only`}>
                         <span className="material-icons" onClick={playlistDeleteHandler}> delete </span>
                     </button>
                 </div>

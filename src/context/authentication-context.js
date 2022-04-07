@@ -12,8 +12,8 @@ const AuthProvider = ({ children }) => {
         token: tokenDetails,
         userDetails: userInfo
     })
-    const { isLogin, token, userDetails: { firstName } } = authState
-    return (<AuthContext.Provider value={{ isLogin, token, firstName, authDispatch }}>
+    const { isLogin, token, userDetails: { firstName, lastName, email } } = authState
+    return (<AuthContext.Provider value={{ isLogin, token, firstName, lastName, email, authDispatch }}>
         {children}
     </AuthContext.Provider>)
 }

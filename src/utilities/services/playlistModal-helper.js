@@ -1,12 +1,11 @@
 import axios from "axios"
 import { toast } from "react-toastify"
-import { encodedToken } from "utilities"
 
 /**
  * get playlist data from server and store in playlist
  * @param {reducer function} playListDispatch 
  */
-const getPlaylistData = async (playListDispatch) => {
+const getPlaylistData = async (playListDispatch, encodedToken) => {
     try {
         const { data } = await axios.get("/api/user/playlists", {
             headers: { authorization: encodedToken },
@@ -21,7 +20,7 @@ const getPlaylistData = async (playListDispatch) => {
  * @param {string} playListTitle title of playlist
  * @param playListDispatch reducer dispatch will add title to playlist
  */
-const createPlayList = async (playListTitle, playListDispatch) => {
+const createPlayList = async (playListTitle, playListDispatch, encodedToken) => {
     try {
         const { data } = await axios.post("/api/user/playlists",
             { playlist: { title: playListTitle } },
@@ -42,7 +41,7 @@ const createPlayList = async (playListTitle, playListDispatch) => {
  * @param {reducer function} playListDispatch 
  * @returns playlist array
  */
-const deletePlaylist = async (playListDispatch, playlistId) => {
+const deletePlaylist = async (playListDispatch, encodedToken, playlistId) => {
     try {
         const { data } = await axios.delete(`/api/user/playlists/${playlistId}`, {
             headers: { authorization: encodedToken },

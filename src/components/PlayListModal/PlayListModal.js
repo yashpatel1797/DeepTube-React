@@ -1,18 +1,18 @@
-import { usePlayList } from 'context'
+import { useAuth, usePlayList } from 'context'
 import React, { useState } from 'react'
 import styles from './PlayListModal.module.css'
 import { createPlayList, isVideoAlreadyInPlaylist, removeVideoFromPlaylist, addVideoInPlaylist, addVideoInWatchLater, removeVideoFromWatchLater, isVideoInArray } from "utilities"
 import ReactDOM from "react-dom"
 import { Loader } from "components"
 const PlayListModal = ({ video }) => {
+    const { token } = useAuth();
     const [playlistInput, setPlaylistInput] = useState(false)
     const { setShowModal, playlists, watchLater, playListTitle, playListDispatch, playListTitleDispatch } = usePlayList();
     const [isLoading, setIsLoading] = useState(false)
-
     const playListTitleHandler = (e) => {
         e.preventDefault();
         setIsLoading(true);
-        createPlayList(playListTitle, playListDispatch)
+        createPlayList(playListTitle, playListDispatch, token)
         setPlaylistInput(false)
         setTimeout(() => { setIsLoading(false); }, 1200);
     }
@@ -22,22 +22,22 @@ const PlayListModal = ({ video }) => {
     const checkboxHandler = (e, playlistId) => {
         if (e.target.checked) {
             setIsLoading(true);
-            addVideoInPlaylist(video, playlistId, playListDispatch)
+            addVideoInPlaylist(video, playlistId, playListDispatch, token)
             setTimeout(() => { setIsLoading(false); }, 1200);
         } else {
             setIsLoading(true);
-            removeVideoFromPlaylist(video._id, playListDispatch, playlistId)
+            removeVideoFromPlaylist(video._id, playListDispatch, token, playlistId)
             setTimeout(() => { setIsLoading(false); }, 1200);
         }
     }
     const watchListHandler = () => {
         if (isVideoInArray(video._id, watchLater)) {
             setIsLoading(true);
-            removeVideoFromWatchLater(video._id, playListDispatch);
+            removeVideoFromWatchLater(video._id, playListDispatch, token);
             setTimeout(() => { setIsLoading(false); }, 1200);
         } else {
             setIsLoading(true);
-            addVideoInWatchLater(video, playListDispatch);
+            addVideoInWatchLater(video, playListDispatch, token);
             setTimeout(() => { setIsLoading(false); }, 1200);
         }
     }

@@ -1,12 +1,11 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import { encodedToken } from "utilities/token";
 /**
  * add video in a History
  * @param {*} video object contains video details
  * @param {*} playListDispatch 
  */
-const addVideoInHistory = async (video, playListDispatch) => {
+const addVideoInHistory = async (video, playListDispatch, encodedToken) => {
     try {
         const { data } = await axios.post("/api/user/history", { video }, {
             headers: { authorization: encodedToken }
@@ -22,7 +21,7 @@ const addVideoInHistory = async (video, playListDispatch) => {
  * @param {*} videoId id of specific video which needs to be removed
  * @param {*} playListDispatch 
  */
-const removeVideoFromHistory = async (videoId, playListDispatch) => {
+const removeVideoFromHistory = async (videoId, playListDispatch, encodedToken) => {
     try {
         const { data } = await axios.delete(`/api/user/history/${videoId}`, {
             headers: { authorization: encodedToken }
@@ -37,7 +36,7 @@ const removeVideoFromHistory = async (videoId, playListDispatch) => {
  * will clear all history
  * @param {reducer function} playListDispatch 
  */
-const deleteAllHistory = async (playListDispatch) => {
+const deleteAllHistory = async (playListDispatch, encodedToken) => {
     try {
         const { data } = await axios.delete("/api/user/history/all", {
             headers: { authorization: encodedToken }

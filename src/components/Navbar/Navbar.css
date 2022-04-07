@@ -28,12 +28,13 @@
 .nav-hamburger {
   display: none;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1070px) {
   .nav-user {
     display: none;
   }
   .nav-hamburger {
     display: block;
+    cursor: pointer;
   }
   .active .nav-user {
     display: block;

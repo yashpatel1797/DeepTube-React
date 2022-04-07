@@ -1,15 +1,16 @@
 import React from 'react'
-import { usePlayList } from 'context'
+import { usePlayList, useAuth } from 'context'
 import { useParams } from "react-router-dom"
 import styles from "./VerticalVideoCard.module.css"
 
 const VerticalVideoCard = ({ videos, deleteVideoFrom }) => {
+    const { token } = useAuth();
 
     const { playListDispatch } = usePlayList();
     const { playlistId } = useParams();
 
     const videoDeleteHandler = (videoId) => {
-        deleteVideoFrom(videoId, playListDispatch, playlistId)
+        deleteVideoFrom(videoId, playListDispatch, token, playlistId)
     }
     return (
         <>

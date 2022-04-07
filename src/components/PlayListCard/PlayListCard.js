@@ -2,17 +2,17 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styles from "./PlayListCard.module.css"
 import { deletePlaylist } from 'utilities'
-import { usePlayList } from 'context'
+import { useAuth, usePlayList } from 'context'
 
 
 const PlayListCard = ({ playlist }) => {
     const { videos, title, _id } = playlist
-
+    const { token } = useAuth();
     const { playListDispatch } = usePlayList()
     const image_id = videos.length > 0 ? `${videos[0]._id}` : "Sxjo5MySQFI"
 
     const playlistDeleteHandler = () => {
-        deletePlaylist(playListDispatch, _id);
+        deletePlaylist(playListDispatch, token, _id);
     }
     return (
         <div className={` ${styles["card-vertical"]} card-vertical`}>

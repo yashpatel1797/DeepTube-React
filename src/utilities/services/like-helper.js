@@ -1,12 +1,11 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import { encodedToken } from "utilities/token";
 /**
  * add video in a likes
  * @param {*} video object contains video details
  * @param {*} playListDispatch 
  */
-const addVideoInLike = async (video, playListDispatch) => {
+const addVideoInLike = async (video, playListDispatch, encodedToken) => {
     try {
         const { data } = await axios.post("/api/user/likes", { video }, {
             headers: { authorization: encodedToken }
@@ -23,7 +22,7 @@ const addVideoInLike = async (video, playListDispatch) => {
  * @param {*} videoId id of specific video which needs to be removed
  * @param {*} playListDispatch 
  */
-const removeVideoFromLike = async (videoId, playListDispatch) => {
+const removeVideoFromLike = async (videoId, playListDispatch, encodedToken) => {
     try {
         const { data } = await axios.delete(`/api/user/likes/${videoId}`, {
             headers: { authorization: encodedToken }

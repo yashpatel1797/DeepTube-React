@@ -9,7 +9,7 @@ import classes from "styles/grid.module.css"
 
 const VideoPage = () => {
     const { like, playListDispatch, watchLater, setShowModal, showModal } = usePlayList();
-    const { isLogin } = useAuth();
+    const { isLogin, token } = useAuth();
     const { videoList } = useVideo();
     const { videoId } = useParams();
     const navigate = useNavigate();
@@ -17,24 +17,24 @@ const VideoPage = () => {
 
     useEffect(() => {
         (async () => {
-            addVideoInHistory(video, playListDispatch)
+            addVideoInHistory(video, playListDispatch, token)
         })();
     }, [video, playListDispatch])
     const likeHandler = () => {
         !isLogin ? navigate("/login") :
-            addVideoInLike(video, playListDispatch)
+            addVideoInLike(video, playListDispatch, token)
     }
     const disLikeHandler = () => {
         !isLogin ? navigate("/login") :
-            removeVideoFromLike(videoId, playListDispatch)
+            removeVideoFromLike(videoId, playListDispatch, token)
     }
     const removeWatchListHandler = () => {
         !isLogin ? navigate("/login") :
-            removeVideoFromWatchLater(video._id, playListDispatch);
+            removeVideoFromWatchLater(video._id, playListDispatch, token);
     }
     const addWatchListHandler = () => {
         !isLogin ? navigate("/login") :
-            addVideoInWatchLater(video, playListDispatch);
+            addVideoInWatchLater(video, playListDispatch, token);
     }
     const saveToPlaylistHandler = () => {
         !isLogin ? navigate("/login") :

@@ -1,12 +1,11 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import { encodedToken } from "utilities/token";
 
 /**
  * get all wishlist data from backend
  * @param {reducer function} playListDispatch 
  */
-const getWatchLaterData = async (playListDispatch) => {
+const getWatchLaterData = async (playListDispatch, encodedToken) => {
     try {
         const { data } = await axios.get("/api/user/watchlater", {
             headers: { authorization: encodedToken }
@@ -22,7 +21,7 @@ const getWatchLaterData = async (playListDispatch) => {
  * @param {*} video object contains video details
  * @param {*} playListDispatch 
  */
-const addVideoInWatchLater = async (video, playListDispatch) => {
+const addVideoInWatchLater = async (video, playListDispatch, encodedToken) => {
     try {
         const { data } = await axios.post("/api/user/watchlater", { video }, {
             headers: { authorization: encodedToken }
@@ -39,7 +38,7 @@ const addVideoInWatchLater = async (video, playListDispatch) => {
  * @param {*} videoId id of specific video which needs to be removed
  * @param {*} playListDispatch 
  */
-const removeVideoFromWatchLater = async (videoId, playListDispatch) => {
+const removeVideoFromWatchLater = async (videoId, playListDispatch, encodedToken) => {
     try {
         const { data } = await axios.delete(`/api/user/watchlater/${videoId}`, {
             headers: { authorization: encodedToken }

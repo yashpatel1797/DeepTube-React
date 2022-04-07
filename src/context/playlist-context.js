@@ -1,11 +1,12 @@
 import React, { useState, useContext, createContext, useReducer, useEffect } from "react"
 import { playListReducer, playListTitleReducer } from "reducer";
 import { getPlaylistData, getWatchLaterData } from "utilities"
+import { useAuth } from "./authentication-context";
 
 const PlayListContext = createContext();
 
 const PlayListProvider = ({ children }) => {
-
+    const { token } = useAuth();
     const [showModal, setShowModal] = useState(false);
     const [playListState, playListDispatch] = useReducer(playListReducer, {
         playlists: [],
@@ -19,10 +20,9 @@ const PlayListProvider = ({ children }) => {
     })
     const { playlists, watchLater, like, history } = playListState
     const { playListTitle, allPlayListTitle } = playListTitleState
-
     useEffect(() => {
-        getPlaylistData(playListDispatch);
-        getWatchLaterData(playListDispatch);
+        getPlaylistData(playListDispatch, token);
+        getWatchLaterData(playListDispatch, token);
     }, [])
 
     return (

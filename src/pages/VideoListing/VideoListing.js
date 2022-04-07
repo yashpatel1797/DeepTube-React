@@ -6,8 +6,7 @@ import classes from "styles/grid.module.css"
 import { PlayListModal } from 'components'
 import { filterFunction } from 'utilities'
 const VideoListing = () => {
-    const [category, setCategory] = useState("All");
-    const { videoList, searchQuery } = useVideo();
+    const { videoList, searchQuery, category, videoDispatch } = useVideo();
     const [currentClickedVideo, setCurrentClickedVideo] = useState(null)
     const { showModal } = usePlayList();
     const filteredVideo = filterFunction(videoList, searchQuery, category)
@@ -21,27 +20,27 @@ const VideoListing = () => {
                         <div className={styles.category} >
                             <span
                                 className={`${styles["chip-content"]} chip-content ${styles.chip} chip ${category === "All" ? styles.active : ""}`}
-                                onClick={() => setCategory("All")}
+                                onClick={() => videoDispatch({ type: "FILTER_BY_CATEGORY", payload: "All" })}
                             >All
                             </span>
                             <span
                                 className={`${styles["chip-content"]} chip-content ${styles.chip} chip ${category === "David Fincher" ? styles.active : ""}`}
-                                onClick={() => setCategory("David Fincher")}
+                                onClick={() => videoDispatch({ type: "FILTER_BY_CATEGORY", payload: "David Fincher" })}
                             >David Fincher
                             </span>
                             <span
                                 className={`${styles["chip-content"]} chip-content ${styles.chip} chip ${category === "Christopher Nolan" ? styles.active : ""}`}
-                                onClick={() => setCategory("Christopher Nolan")}
+                                onClick={() => videoDispatch({ type: "FILTER_BY_CATEGORY", payload: "Christopher Nolan" })}
                             >Christopher Nolan
                             </span>
                             <span
                                 className={`${styles["chip-content"]} chip-content ${styles.chip} chip ${category === "Quentin Tarantino" ? styles.active : ""}`}
-                                onClick={() => setCategory("Quentin Tarantino")}
+                                onClick={() => videoDispatch({ type: "FILTER_BY_CATEGORY", payload: "Quentin Tarantino" })}
                             >Quentin Tarantino
                             </span>
                             <span
                                 className={`${styles["chip-content"]} chip-content ${styles.chip} chip ${category === "Martin Scorsese" ? styles.active : ""}`}
-                                onClick={() => setCategory("Martin Scorsese")}
+                                onClick={() => videoDispatch({ type: "FILTER_BY_CATEGORY", payload: "Martin Scorsese" })}
                             >Martin Scorsese
                             </span>
                         </div>

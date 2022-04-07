@@ -8,8 +8,9 @@ const VideoProvider = ({ children }) => {
     const [videoState, videoDispatch] = useReducer(videoReducer, {
         videoList: [],
         searchQuery: "",
+        category: "All",
     })
-    const { videoList, searchQuery } = videoState;
+    const { videoList, searchQuery, category } = videoState;
     useEffect(() => {
         (async () => {
             const data = await getVideosDataFromVideo();
@@ -18,7 +19,7 @@ const VideoProvider = ({ children }) => {
     }, [])
 
     return (
-        <VideoContext.Provider value={{ videoList, searchQuery, videoDispatch }}>
+        <VideoContext.Provider value={{ videoList, searchQuery, category, videoDispatch }}>
             {children}
         </VideoContext.Provider>
 

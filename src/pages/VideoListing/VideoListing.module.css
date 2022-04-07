@@ -1,8 +1,9 @@
 .category {
   display: flex;
+  flex-wrap: wrap;
 }
 .chip {
-  margin: 0 1rem;
+  margin: .5rem 1rem;
   cursor: pointer;
 }
 .active {

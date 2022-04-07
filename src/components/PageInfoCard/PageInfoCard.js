@@ -1,5 +1,5 @@
 import React from 'react'
-import { usePlayList } from 'context'
+import { useAuth, usePlayList } from 'context'
 import { useNavigate, useParams } from "react-router-dom"
 import styles from "./PageInfoCard.module.css"
 
@@ -7,9 +7,10 @@ const PageInfoCard = ({ image_id, title, deleteButton }) => {
     const navigate = useNavigate();
     const { playListDispatch } = usePlayList();
     const { playlistId } = useParams();
+    const { token } = useAuth();
 
     const playlistDeleteHandler = () => {
-        deleteButton(playListDispatch, playlistId);
+        deleteButton(playListDispatch, token, playlistId);
         playlistId && navigate("/playlist");
     }
     return (

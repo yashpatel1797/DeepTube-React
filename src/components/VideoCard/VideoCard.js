@@ -5,7 +5,7 @@ import { addVideoInWatchLater, removeVideoFromWatchLater, isVideoInArray } from 
 import { Link } from 'react-router-dom'
 
 const VideoCard = ({ video, setCurrentClickedVideo }) => {
-    const { isLogin } = useAuth();
+    const { isLogin, token } = useAuth();
     const { _id, title, creator, duration, views, uploaded } = video
     const [displayContainer, setDisplayContainer] = useState(false);
     const { setShowModal, watchLater, playListDispatch } = usePlayList();
@@ -17,11 +17,11 @@ const VideoCard = ({ video, setCurrentClickedVideo }) => {
     }
     const removeWatchListHandler = () => {
         setDisplayContainer(pre => !pre)
-        removeVideoFromWatchLater(_id, playListDispatch);
+        removeVideoFromWatchLater(_id, playListDispatch, token);
     }
     const addWatchListHandler = () => {
         setDisplayContainer(pre => !pre)
-        addVideoInWatchLater(video, playListDispatch);
+        addVideoInWatchLater(video, playListDispatch, token);
     }
     return (
         <div className={` ${styles["card-vertical"]} card-vertical`}>

@@ -4,6 +4,8 @@ const videoReducer = (state, { type, payload }) => {
             return { ...state, videoList: payload }
         case "FILTER_BY_SEARCH":
             return { ...state, searchQuery: payload }
+        case "FILTER_BY_CATEGORY":
+            return { ...state, category: payload }
         default:
             return state;
     }

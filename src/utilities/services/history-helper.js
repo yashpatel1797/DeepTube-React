@@ -10,9 +10,10 @@ const addVideoInHistory = async (video, playListDispatch, encodedToken) => {
         const { data } = await axios.post("/api/user/history", { video }, {
             headers: { authorization: encodedToken }
         })
-        playListDispatch({ type: "ADD_HISTORY", payload: data.history })
+        if (data) {
+            playListDispatch({ type: "ADD_HISTORY", payload: data.history })
+        }
     } catch (error) {
-        console.log(error);
     }
 }
 

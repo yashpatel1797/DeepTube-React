@@ -12,7 +12,6 @@ const getWatchLaterData = async (playListDispatch, encodedToken) => {
         })
         playListDispatch({ type: "ADD_WATCHLATER", payload: data.watchlater })
     } catch (error) {
-        console.log(error);
     }
 }
 

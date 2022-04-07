@@ -10,8 +10,7 @@ const Navbar = () => {
     const [toggle, setToggle] = useState(false);
     const logoutHandler = () => {
         setToggle(false)
-        localStorage.removeItem("token");
-        localStorage.removeItem("userData");
+        localStorage.clear();
         authDispatch({ type: "USER_LOGOUT" })
     }
     return (

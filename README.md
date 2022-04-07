@@ -7,6 +7,7 @@
 - [Contains](#contains)
 - [Getting Started](#getting-started)
 - [Technologies Used](#technologies-used)
+- [Screenshot](#screenshot)
 - [Links](#links)
 - [Author](#author)
 
@@ -79,6 +80,14 @@ yarn start
 - HTML, CSS, JavaScript
 - [Mockbee](https://mockbee.netlify.app/) for backend
 - **Hosted:** Netlify
+
+## Screenshot
+![4](https://user-images.githubusercontent.com/16306433/162260579-91ee652c-ea5c-4af3-be12-88ccca76bc08.PNG)
+
+![5](https://user-images.githubusercontent.com/16306433/162260551-0bc9689d-2d9c-4258-88dc-ab6249906994.PNG)
+![6](https://user-images.githubusercontent.com/16306433/162261479-321a4fee-177e-424d-bb6b-a4f47a742390.PNG)
+
+
 
 ## Links
 
